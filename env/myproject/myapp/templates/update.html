@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Enquiry</title>
+</head>
+<body>
+    <form action="{% url 'updateenq'%}" method="post">
+        {%csrf_token%}
+        <h2>Update enquiry form</h2>
+        <hr/>
+        Name:
+        <input type="text" name="name" value="{{enqq.name}}" required/>
+        <br/><br/>
+        Address:
+        <textarea name="address" required>{{enqq.address}}</textarea>
+        <br/><br/>
+        Contact No:
+        <input type="text" name="contactno" value="{{enqq.contactno}}"/>
+        <br/><br/>
+        Email Address:
+        <input type="email" name="emailaddress" value="{{enqq.emailaddress}}"/>
+        <br/><br/>
+        Enquiry Text
+        <textarea name="enquirytext" required>{{enqq.enquirytext}}</textarea>
+        <br/><br/>
+        <input type="hidden" name="id" value="{{enqq.id}}"/>
+        <input type="submit" value="Update"/>
+    </form>
+</body>
+</html>

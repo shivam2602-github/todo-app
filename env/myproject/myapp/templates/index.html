@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My First Django Web Application</title>
+    <style>
+        img{
+        height:300px;
+        width: 1350px;
+        }
+    </style>
+     {% load static %}
+    <link href="{% static 'css/style.css'%}" rel="stylesheet"/>
+</head>
+<body>
+
+
+    <img  src="{% static 'images/django.jpg'%}"/>
+    <h1>List of Enquiries</h1>
+    <a href="{% url 'enquiry'%}">Create new enquiry</a>
+    <br/>
+    <a href="{% url 'upload'%}">File Upload Demo</a>
+    <hr/>
+    
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Contact No</th>
+            <th>Email Address</th>
+            <th>Enquiry Text</th>
+            <th>Delete</th>
+            <th>Update</th>
+
+        </tr>
+        {% for e in enqq %}
+        <tr>
+                 <td>{{e.id}}</td>;
+                 <td>{{e.name}}</td>
+                 <td>{{e.address}}</td>
+                 <td>{{e.no}}</td>
+                 <td>{{e.emailaddress}}</td>
+                 <td>{{e.enquirytext}}</td>
+
+
+                <td><a href="{% url 'delete' e.id  %}"> Delete</a></td>
+                <td><a href="{% url 'update' e.id %}"> Update </a></td>
+        </tr>
+       {% endfor %}
+    </table>
+</body>
+</html>
